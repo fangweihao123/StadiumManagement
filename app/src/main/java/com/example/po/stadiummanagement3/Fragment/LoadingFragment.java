@@ -21,9 +21,11 @@ import com.example.po.stadiummanagement3.WebService.HttpService;
 import java.io.IOException;
 import java.util.concurrent.atomic.LongAdder;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
 import okhttp3.Response;
 
 /**
@@ -31,8 +33,15 @@ import okhttp3.Response;
  */
 
 public class LoadingFragment extends Fragment {
-    private ImageView imageView;
+    @BindView(R.id.background)
+    ImageView imageView;
     private final String picUrl = "http://guolin.tech/api/bing_pic";
+
+    @OnClick(R.id.background)
+    void onClick(View view){
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,15 +53,9 @@ public class LoadingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.loading_fragment,container,false);
-        imageView = v.findViewById(R.id.background);
-        imageView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        //imageView = v.findViewById(R.id.background);
         loadPic();
+        ButterKnife.bind(this,v);
         return v;
     }
 

@@ -93,8 +93,6 @@ public class MomentFragment extends Fragment {
         public void bindInfo(String text,int drawable_id){
             textView.setText(text);
             imageView.setImageResource(drawable_id);
-            //imageView.setBackgroundResource(drawable_id);
         }
-
     }
 }
