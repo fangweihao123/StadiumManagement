@@ -9,4 +9,5 @@ public class MainActivity extends SingleFragmentActivity{                       
     protected Fragment createFragment() {
         return new MainFragment();
     }
+
 }

@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="schedule_bg">#FBF7F7</color>
+    <color name="schedule_item_bg1">#8DAAE1</color>
+    <color name="schedule_item_bg2">#00649F</color>
+
+    <color name="schedule_frame">#F4F9F4</color>
 </resources>

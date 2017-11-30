@@ -1,24 +1,29 @@
 package com.example.po.stadiummanagement3.Fragment;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.example.po.stadiummanagement3.Adapter.MainAdapter;
 import com.example.po.stadiummanagement3.Gson.AreaInfo;
 import com.example.po.stadiummanagement3.R;
 
@@ -32,16 +37,21 @@ import butterknife.ButterKnife;
  * Created by 13701 on 2017/11/24.
  */
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment
+        implements BottomNavigationBar.OnTabSelectedListener {
     @BindView(R.id.nav_view) NavigationView navView;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    @BindView(R.id.main_recycler_view) RecyclerView recyclerView;
-    private List<AreaInfo> list;
-    private MainAdapter mAdapter;
+    @BindView(R.id.navigation_bar) BottomNavigationBar bottomNavigationBar;
+    private HomeFragment homeFragment;
+    private MomentFragment momentFragment;
+    private OrderFragment orderFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main,container,false);
+        homeFragment = new HomeFragment();
+        momentFragment = new MomentFragment();
+        orderFragment = new OrderFragment();
         ButterKnife.bind(this,v);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -60,59 +70,66 @@ public class MainFragment extends Fragment {
                 return true;
             }
         });
-
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-        list = new ArrayList<>();
-        list.add(new AreaInfo("aaaaaaaa"));
-        list.add(new AreaInfo("bbbbbbb"));
-        list.add(new AreaInfo("ccccccc"));
-        mAdapter = new MainFragment.MainAdapter(list,getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
+        initNavigationBar(v);
         return v;
     }
 
-    public class MainAdapter extends RecyclerView.Adapter<MainFragment.MomentHolder>{
-        private List<AreaInfo> infos;
-        private Context context;
+    private void initNavigationBar(View v) {
+        //bottomNavigationBar = (BottomNavigationBar)v.findViewById(R.id.navigation_bar);
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_home, "主页"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_order, "预定"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_discover, "动态"))
+                .initialise();
+        bottomNavigationBar.setTabSelectedListener(this);
+        setDefaultFragment();
+    }
 
-        MainAdapter(List<AreaInfo> _infos,Context _context){
-            infos = _infos;
-            context = _context;
-        }
+    /**
+     * 设置默认界面
+     */
+    private void setDefaultFragment() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_layout, homeFragment);
+        transaction.commit();
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //actionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
 
-        @Override
-        public MainFragment.MomentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v= LayoutInflater.from(context).inflate(R.layout.area_layout,parent,false);
-            MainFragment.MomentHolder mHolder = new MainFragment.MomentHolder(v);
-            return mHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(MainFragment.MomentHolder holder, int position) {
-            holder.bindInfo(infos.get(position).getName(),R.drawable.test);
-        }
-
-        @Override
-        public int getItemCount() {
-            return infos.size();
+    @Override
+    public void onTabSelected(int position) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        switch (position) {
+            case 0:
+                transaction.replace(R.id.main_layout, homeFragment);
+                transaction.commit();
+                break;
+            case 1:
+                transaction.replace(R.id.main_layout, orderFragment);
+                transaction.commit();
+                break;
+            case 2:
+                transaction.replace(R.id.main_layout, momentFragment);
+                transaction.commit();
+                break;
+            default:
+                break;
         }
     }
 
-    public class MomentHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.imageView1)
-        public ImageView imageView1;
-        @BindView(R.id.imageView2)
-        public ImageView imageView2;
-        public MomentHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this,itemView);
-        }
+    @Override
+    public void onTabUnselected(int position) {
 
-        public void bindInfo(String text,int drawable_id){
-            imageView1.setImageResource(drawable_id);
-            imageView2.setImageResource(drawable_id);
-        }
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
     }
 }

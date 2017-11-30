@@ -8,10 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--include layout="@layout/app_bar_main" /-->
 
     <!--这个是Drawer -->
     <android.support.design.widget.NavigationView
@@ -23,5 +20,20 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
+
+
+
+        <FrameLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.ashokvarma.bottomnavigation.BottomNavigationBar
+                android:id="@+id/navigation_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                >
+            </com.ashokvarma.bottomnavigation.BottomNavigationBar>
+        </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>
