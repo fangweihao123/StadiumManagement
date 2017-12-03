@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.po.stadiummanagement3.Activity.ScheduleActivity;
 import com.example.po.stadiummanagement3.R;
@@ -17,8 +18,8 @@ import butterknife.ButterKnife;
  */
 
 public class AreaHolder extends RecyclerView.ViewHolder{
-    @BindView(R.id.imageView1)
-    public ImageView imageView1;
+    @BindView(R.id.text_view1)
+    public TextView textView;
     @BindView(R.id.imageView2)
     public ImageView imageView2;
     private Context _context;
@@ -30,8 +31,11 @@ public class AreaHolder extends RecyclerView.ViewHolder{
     }
 
     public void bindInfo(String text,int drawable_id){
-        imageView1.setImageResource(drawable_id);
+        /*if(text=="aaaaaaaa"){
+            imageView1.setImageResource(drawable_id);
+        }*/
         imageView2.setImageResource(drawable_id);
+        textView.setText(text);
     }
 
 }

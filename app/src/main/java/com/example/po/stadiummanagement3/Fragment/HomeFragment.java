@@ -45,6 +45,13 @@ public class HomeFragment extends Fragment{
         list.add(new AreaInfo("aaaaaaaa"));
         list.add(new AreaInfo("bbbbbbb"));
         list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("ccccccc"));
         mAdapter = new MainAdapter(list,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);

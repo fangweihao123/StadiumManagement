@@ -7,7 +7,7 @@
         <item
             android:id="@+id/phone"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Phone" />
+            android:title="15801729363" />
         <item
             android:id="@+id/help"
             android:icon="@drawable/ic_menu_gallery"

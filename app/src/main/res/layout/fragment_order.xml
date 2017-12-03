@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context="com.example.po.stadiummanagement3.Activity.MainActivity"
-    android:background="@android:color/holo_purple">
+    android:background="@android:color/holo_purple"
+    android:layout_marginBottom="50dp">
 
     <TextView
         android:layout_width="match_parent"
