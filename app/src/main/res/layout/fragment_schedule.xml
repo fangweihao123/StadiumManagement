@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
@@ -107,6 +108,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Apply" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

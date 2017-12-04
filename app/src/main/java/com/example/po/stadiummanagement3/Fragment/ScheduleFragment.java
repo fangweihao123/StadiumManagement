@@ -7,19 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.example.po.stadiummanagement3.Adapter.ScheduleAdapter;
 import com.example.po.stadiummanagement3.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by 13701 on 2017/11/29.
  */
 
 public class ScheduleFragment extends Fragment {
+    //@BindView(R.id.venue_picture)
+    private ImageView areaImage;
     private GridView gridView;
-
     private String [] [] content;
-
     private ScheduleAdapter scheduleAdapter;
 
     @Nullable
@@ -27,6 +31,9 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_schedule,container,false);
+        areaImage = v.findViewById(R.id.venue_picture);
+        ButterKnife.bind(this,v);
+        areaImage.setBackgroundResource(R.drawable.pool);
         initContent();
         gridView = (GridView) v.findViewById(R.id.information);
         scheduleAdapter = new ScheduleAdapter(getContext(), content, 5 ,7);
