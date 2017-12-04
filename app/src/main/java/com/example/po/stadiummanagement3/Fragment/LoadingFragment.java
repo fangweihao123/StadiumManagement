@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.po.stadiummanagement3.Activity.LoginActivity;
 import com.example.po.stadiummanagement3.Activity.MainActivity;
 import com.example.po.stadiummanagement3.R;
 import com.example.po.stadiummanagement3.WebService.HttpService;
@@ -39,7 +40,7 @@ public class LoadingFragment extends Fragment {
 
     @OnClick(R.id.background)
     void onClick(View view){
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
 
