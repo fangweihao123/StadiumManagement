@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.po.stadiummanagement3.Fragment.MomentFragment;
 import com.example.po.stadiummanagement3.Gson.AreaInfo;
 import com.example.po.stadiummanagement3.Holder.MomentHolder;
 import com.example.po.stadiummanagement3.R;
@@ -30,7 +29,7 @@ public class MomentAdapter extends RecyclerView.Adapter<MomentHolder>{
 
     @Override
     public MomentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(context).inflate(R.layout.moment_item,parent,false);
+        View v= LayoutInflater.from(context).inflate(R.layout.reserve_item,parent,false);
         MomentHolder mHolder = new MomentHolder(v);
         return mHolder;
     }

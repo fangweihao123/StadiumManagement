@@ -30,12 +30,20 @@ public class AreaHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this,itemView);
     }
 
-    public void bindInfo(String text,int drawable_id){
-        /*if(text=="aaaaaaaa"){
-            imageView1.setImageResource(drawable_id);
-        }*/
-        imageView2.setImageResource(drawable_id);
-        textView.setText(text);
+    public void bindInfo(String text){
+        if(text == "游泳馆"){
+            imageView2.setImageResource(R.drawable.pool);
+            textView.setText(text);
+        }else if(text == "篮球馆"){
+            imageView2.setImageResource(R.drawable.basketball);
+            textView.setText(text);
+        }else if(text == "乒乓球馆"){
+            imageView2.setImageResource(R.drawable.pingpang);
+            textView.setText(text);
+        }else if(text == "羽毛球馆"){
+            imageView2.setImageResource(R.drawable.badminton);
+            textView.setText(text);
+        }
     }
 
 }

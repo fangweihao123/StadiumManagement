@@ -19,12 +19,12 @@ public class MomentHolder extends RecyclerView.ViewHolder{
     public MomentHolder(View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.pic_id);
-        textView = itemView.findViewById(R.id.text_view);
+        textView = itemView.findViewById(R.id.reserve_text1);
         cardView = itemView.findViewById(R.id.card_view);
     }
 
     public void bindInfo(String text,int drawable_id){
-        textView.setText(text);
         imageView.setImageResource(drawable_id);
+        textView.setText(text);
     }
 }

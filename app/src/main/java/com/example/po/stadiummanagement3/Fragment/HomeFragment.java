@@ -42,16 +42,10 @@ public class HomeFragment extends Fragment{
     private void initRecycleView(){
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         list = new ArrayList<>();
-        list.add(new AreaInfo("aaaaaaaa"));
-        list.add(new AreaInfo("bbbbbbb"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
-        list.add(new AreaInfo("ccccccc"));
+        list.add(new AreaInfo("游泳馆"));
+        list.add(new AreaInfo("篮球馆"));
+        list.add(new AreaInfo("乒乓球馆"));
+        list.add(new AreaInfo("羽毛球馆"));
         mAdapter = new MainAdapter(list,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);

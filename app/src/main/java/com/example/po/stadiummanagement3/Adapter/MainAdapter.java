@@ -37,7 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter<AreaHolder> implements Vie
 
     @Override
     public void onBindViewHolder(AreaHolder holder, int position) {
-        holder.bindInfo(infos.get(position).getName(),R.drawable.test);
+        holder.bindInfo(infos.get(position).getName());
     }
 
     @Override

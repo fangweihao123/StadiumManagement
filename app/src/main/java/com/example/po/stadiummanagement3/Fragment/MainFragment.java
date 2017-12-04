@@ -1,6 +1,5 @@
 package com.example.po.stadiummanagement3.Fragment;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,13 +8,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +17,7 @@ import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.example.po.stadiummanagement3.Adapter.MainAdapter;
-import com.example.po.stadiummanagement3.Gson.AreaInfo;
 import com.example.po.stadiummanagement3.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,14 +32,14 @@ public class MainFragment extends Fragment
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.navigation_bar) BottomNavigationBar bottomNavigationBar;
     private HomeFragment homeFragment;
-    private MomentFragment momentFragment;
+    private ReserveFragment reserveFragment;
     private OrderFragment orderFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main,container,false);
         homeFragment = new HomeFragment();
-        momentFragment = new MomentFragment();
+        reserveFragment = new ReserveFragment();
         orderFragment = new OrderFragment();
         ButterKnife.bind(this,v);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -111,11 +100,11 @@ public class MainFragment extends Fragment
                 transaction.commit();
                 break;
             case 1:
-                transaction.replace(R.id.main_layout, orderFragment);
+                transaction.replace(R.id.main_layout,reserveFragment );
                 transaction.commit();
                 break;
             case 2:
-                transaction.replace(R.id.main_layout, momentFragment);
+                transaction.replace(R.id.main_layout,reserveFragment);
                 transaction.commit();
                 break;
             default:

@@ -5,7 +5,7 @@ package com.example.po.stadiummanagement3.Activity;
  */
 import android.support.v4.app.Fragment;
 
-import com.example.po.stadiummanagement3.Fragment.MomentFragment;
+import com.example.po.stadiummanagement3.Fragment.ReserveFragment;
 
 /**
  * Created by 13701 on 2017/11/24.
@@ -14,6 +14,6 @@ import com.example.po.stadiummanagement3.Fragment.MomentFragment;
 public class MomentActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
-        return new MomentFragment();
+        return new ReserveFragment();
     }
 }
