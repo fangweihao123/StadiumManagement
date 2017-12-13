@@ -33,12 +33,14 @@ public class MainFragment extends Fragment
     @BindView(R.id.navigation_bar) BottomNavigationBar bottomNavigationBar;
     private HomeFragment homeFragment;
     private ReserveFragment reserveFragment;
+    private MomentFragment momentFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main,container,false);
         homeFragment = new HomeFragment();
         reserveFragment = new ReserveFragment();
+        momentFragment = new MomentFragment();
         ButterKnife.bind(this,v);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -102,7 +104,7 @@ public class MainFragment extends Fragment
                 transaction.commit();
                 break;
             case 2:
-                transaction.replace(R.id.main_layout,reserveFragment);
+                transaction.replace(R.id.main_layout,momentFragment);
                 transaction.commit();
                 break;
             default:
