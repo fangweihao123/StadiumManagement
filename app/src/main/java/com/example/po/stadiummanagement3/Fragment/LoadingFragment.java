@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.LongAdder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import butterknife.OnClick ;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

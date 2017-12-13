@@ -16,8 +16,8 @@ public class HttpService {
         OkHttpClient client = new OkHttpClient.Builder().readTimeout(5, TimeUnit.SECONDS).build();//在builder的时候就实例化了一个dispatcher
         final Request request = new Request.Builder().get()                 //用到build的设计模式
                 .url(_url).build();
-        client.newCall(request).enqueue(callback);
-
+        client.newCall(request).enqueue(callback);                      //newCall 返回call 通过call来调用enqueue
+        //client.newCall(request).execute();
         //okhttp 异步请求方法
         //1.创建okhttpClient和Request对象
         //2.将Request封装为call对象

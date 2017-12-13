@@ -33,14 +33,12 @@ public class MainFragment extends Fragment
     @BindView(R.id.navigation_bar) BottomNavigationBar bottomNavigationBar;
     private HomeFragment homeFragment;
     private ReserveFragment reserveFragment;
-    private OrderFragment orderFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main,container,false);
         homeFragment = new HomeFragment();
         reserveFragment = new ReserveFragment();
-        orderFragment = new OrderFragment();
         ButterKnife.bind(this,v);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
