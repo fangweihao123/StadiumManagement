@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/androidbase
+    username: root
+    password: ztjztj120
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
