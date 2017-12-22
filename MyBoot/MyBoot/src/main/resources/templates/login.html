@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:if="${session.username != null}" th:text="${session.username}"></title>
+
+    <title th:if="${session.username == null}" th:text="新游客"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+<body>
+hi,please login here
+
+<form action="/login" method="post" enctype="multipart/form-data">
+    <p>Phone: <input type="text" name="phone" /></p>
+    <input type="submit" value="Submit" />
+</form>
+
+
+</body>
+</html>
