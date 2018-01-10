@@ -14,19 +14,28 @@ import com.example.po.stadiummanagement3.Activity.ScheduleActivity;
 import com.example.po.stadiummanagement3.Adapter.MainAdapter;
 import com.example.po.stadiummanagement3.Gson.AreaInfo;
 import com.example.po.stadiummanagement3.R;
+import com.example.po.stadiummanagement3.WebService.HttpService;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Created by 田雍恺 on 2017/11/28.
  */
 
-public class HomeFragment extends Fragment{
-    private List<AreaInfo> list;
+public class HomeFragment extends Fragment{                         //在homefragment发出网络请求要求 ip:8888/stadium/all get请求获得所有信息
+    private List<AreaInfo> list;                                    //ip:8888/stadium/pic?name=xxxxx
     private MainAdapter mAdapter;
     @BindView(R.id.main_recycler_view)
     RecyclerView recyclerView;
@@ -42,10 +51,31 @@ public class HomeFragment extends Fragment{
     private void initRecycleView(){
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         list = new ArrayList<>();
-        list.add(new AreaInfo("游泳馆"));
-        list.add(new AreaInfo("篮球馆"));
-        list.add(new AreaInfo("乒乓球馆"));
-        list.add(new AreaInfo("羽毛球馆"));
+        final Gson gson = new Gson();
+        HttpService.sendOkHttpRequest("stadium/all", new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String s = response.body().string();
+                list = gson.fromJson(s,
+                        new TypeToken<List<AreaInfo>>(){}.getType());
+            }
+        });
+        while (list.size()==0){}
+        /*try {
+            Response response = HttpService.sendGetRequest("stadium/all");
+            String s = response.body().string();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
         mAdapter = new MainAdapter(list,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);

@@ -60,7 +60,7 @@
 
 ### Okhttp3的使用和研究
 #### 同步调用
-<font face="微软雅黑" size=10>同步调用请求就是直接调用RealCall方法的execute()方法，同步调用的缺点就是会导致线程阻塞,界面卡顿，所以不推荐使用</font>
+<font size=10>同步调用请求就是直接调用RealCall方法的execute()方法，同步调用的缺点就是会导致线程阻塞,界面卡顿，所以不推荐使用</font>
 ```java
     OkHttpClient client = new OkHttpClient.Builder().readTimeout(5, TimeUnit.SECONDS).build();//在builder的时候就实例化了一个dispatcher
         final Request request = new Request.Builder().get()                 //用到build的设计模式

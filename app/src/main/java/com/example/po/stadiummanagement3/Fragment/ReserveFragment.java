@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.po.stadiummanagement3.Adapter.MomentAdapter;
+import com.example.po.stadiummanagement3.Adapter.ReserveAdapter;
 import com.example.po.stadiummanagement3.Gson.AreaInfo;
 import com.example.po.stadiummanagement3.R;
 
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ReserveFragment extends Fragment {
     private List<AreaInfo> list;
-    private MomentAdapter mAdapter;
+    private ReserveAdapter mAdapter;
     private RecyclerView recyclerView;
     @Nullable
     @Override
@@ -33,7 +33,7 @@ public class ReserveFragment extends Fragment {
         list.add(new AreaInfo("游泳馆"));
         list.add(new AreaInfo("篮球馆"));
         list.add(new AreaInfo("乒乓球馆"));
-        mAdapter = new MomentAdapter(list,getActivity());
+        mAdapter = new ReserveAdapter(list,getActivity());
         recyclerView = v.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);

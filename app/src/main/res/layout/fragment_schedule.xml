@@ -1,120 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.po.stadiummanagement3.Activity.ScheduleActivity">
-    <ScrollView
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/venue_picture"/>
+
+    <!--分隔线-->
+    <View
+        android:id="@+id/line1"
+        android:layout_below="@id/venue_picture"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#00ff7f"/>
+
+    <com.loonggg.weekcalendar.view.WeekCalendar
+        android:layout_below="@id/line1"
+        android:id="@+id/week"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#ffffff"
+        app:isCornerMark="true"
+        app:monthBackgroundColor="#8F83F1"
+        app:hideTodayName="false"
+        app:daysSelectedBackground="@drawable/green_oval_bg"/>
+
+    <ExpandableListView
+        android:id="@+id/time_line"
+        android:layout_below="@id/week"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:overScrollMode="never">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:divider="@null"
+        android:layout_marginRight="10dp"
+        android:cacheColorHint="#000000">
+    </ExpandableListView>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:id="@+id/venue_picture"/>
-
-            <!--分隔线-->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#00ff7f"/>
-
-            <!--显示星期-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/schedule_frame">
-
-                <com.example.po.stadiummanagement3.View.WeekTitle
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="15dp"/>
-            </LinearLayout>
-            <!--显示信息-->
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="@color/schedule_frame">
-                <!--显示时间点-->
-                <LinearLayout
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="92dp"
-                        android:gravity="center"
-                        android:text="一"
-                        android:textColor="@android:color/black"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="92dp"
-                        android:gravity="center"
-                        android:text="二"
-                        android:textColor="@android:color/black"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="92dp"
-                        android:gravity="center"
-                        android:text="三"
-                        android:textColor="@android:color/black"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="92dp"
-                        android:gravity="center"
-                        android:text="四"
-                        android:textColor="@android:color/black"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="93dp"
-                        android:gravity="center"
-                        android:text="五"
-                        android:textColor="@android:color/black"/>
-                </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#E5E5E5"/>
-
-                <GridView
-                    android:id="@+id/information"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:numColumns="7"
-                    android:horizontalSpacing="3dp"
-                    android:verticalSpacing="1dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/schedule_bg">
-                </GridView>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"/>
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Apply" />
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+</RelativeLayout>

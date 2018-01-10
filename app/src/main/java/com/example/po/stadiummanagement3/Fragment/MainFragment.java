@@ -1,9 +1,11 @@
-package com.example.po.stadiummanagement3.Fragment;
+	package com.example.po.stadiummanagement3.Fragment;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.example.po.stadiummanagement3.Activity.ReleaseActivity;
 import com.example.po.stadiummanagement3.R;
 
 import butterknife.BindView;
@@ -31,6 +34,7 @@ public class MainFragment extends Fragment
     @BindView(R.id.nav_view) NavigationView navView;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.navigation_bar) BottomNavigationBar bottomNavigationBar;
+    @BindView(R.id.fab_main) FloatingActionButton mfab;
     private HomeFragment homeFragment;
     private ReserveFragment reserveFragment;
     private MomentFragment momentFragment;
@@ -60,8 +64,18 @@ public class MainFragment extends Fragment
             }
         });
         initNavigationBar(v);
+        mfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getContext(),"111111",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ReleaseActivity.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
+
+
 
     private void initNavigationBar(View v) {
         //bottomNavigationBar = (BottomNavigationBar)v.findViewById(R.id.navigation_bar);
@@ -96,14 +110,17 @@ public class MainFragment extends Fragment
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (position) {
             case 0:
+                mfab.show();
                 transaction.replace(R.id.main_layout, homeFragment);
                 transaction.commit();
                 break;
             case 1:
+                mfab.hide();
                 transaction.replace(R.id.main_layout,reserveFragment );
                 transaction.commit();
                 break;
             case 2:
+                mfab.hide();
                 transaction.replace(R.id.main_layout,momentFragment);
                 transaction.commit();
                 break;
